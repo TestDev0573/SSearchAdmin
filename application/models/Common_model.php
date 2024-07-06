@@ -192,10 +192,17 @@ class Common_model extends CI_Model {
 
 
     //-- image upload function with resize option
-    function upload_image($max_size){
-            
-            //-- set upload path
-            $config['upload_path']  = "./assets/images/";
+    function upload_image($images){
+        $count = count($images['files']['name']);
+        for($i=0;$i<$count;$i++)
+        {
+            $_FILES['file']['name'] = $images['files']['name'][$i];
+            $_FILES['file']['type'] = $images['files']['type'][$i];
+            $_FILES['file']['tmp_name'] =$images['files']['tmp_name'][$i];
+            $_FILES['file']['error'] = $images['files']['error'][$i];
+            $_FILES['file']['size'] = $images['files']['size'][$i];
+                        //-- set upload path
+            $config['upload_path']  = "uploads/images/";
             $config['allowed_types']= 'gif|jpg|png|jpeg';
             $config['max_size']     = '92000';
             $config['max_width']    = '92000';
@@ -203,15 +210,15 @@ class Common_model extends CI_Model {
 
             $this->load->library('upload', $config);
 
-            if ($this->upload->do_upload("photo")) {
+            if($this->upload->do_upload("file")) {
 
                 
                 $data = $this->upload->data();
 
                 //-- set upload path
-                $source             = "./assets/images/".$data['file_name'] ;
-                $destination_thumb  = "./assets/images/thumbnail/" ;
-                $destination_medium = "./assets/images/medium/" ;
+                $source             = "uploads/images/".$data['file_name'] ;
+                $destination_thumb  = "uploads/images/thumbnail/" ;
+                $destination_medium = "uploads/images/medium/" ;
                 $main_img = $data['file_name'];
                 // Permission Configuration
                 chmod($source, 0777) ;
@@ -224,8 +231,8 @@ class Common_model extends CI_Model {
                 $img['maintain_ratio']= TRUE;
 
                 /// Limit Width Resize
-                $limit_medium   = $max_size ;
-                $limit_thumb    = 200 ;
+                $limit_medium   = 470 ;
+                $limit_thumb    = 270 ;
 
                 // Size Image Limit was using (LIMIT TOP)
                 $limit_use  = $data['image_width'] > $data['image_height'] ? $data['image_width'] : $data['image_height'] ;
@@ -268,20 +275,26 @@ class Common_model extends CI_Model {
                 $this->image_lib->resize();
                 $this->image_lib->clear() ;
 
-                //-- set upload path
-                $images = 'assets/images/medium/'.$mid;
-                $thumb  = 'assets/images/thumbnail/'.$thumb_nail;
-                unlink($source) ;
+                // //-- set upload path
+                // $images = 'uploads/images/medium/'.$mid;
+                // $thumb  = 'uploads/images/thumbnail/'.$thumb_nail;
+                // //unlink($source) ;
 
-                return array(
-                    'images' => $images,
-                    'thumb' => $thumb
-                );
+                // return array(
+                //     'images' => $images,
+                //     'thumb' => $thumb
+                // );
             }
-            else {
-                echo "Failed! to upload image" ;
-            }
+        }
             
+    }
+    function get_sub_category($category_id){
+        $query = $this->db->get_where('tbl_sub_category', array('cat_id' => $category_id));
+        return $query;
+    }
+    function get_locality($city){
+        $query = $this->db->get_where('tbl_locality', array('city_id' => $city));
+        return $query;
     }
 
 }

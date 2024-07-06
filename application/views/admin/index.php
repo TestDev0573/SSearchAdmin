@@ -8,7 +8,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="icon-grid"></i></a>
-                <div class="top-left-part"><a class="logo" href="<?php echo base_url('admin/dashboard/') ?>"><b><img src="<?php echo base_url();?>optimum/small.png" alt="Codeig" /></b><span class="hidden-xs">Igniter Admin</span></a></div>
+                <div class="top-left-part"><a class="logo" href="<?php echo base_url('admin/dashboard/') ?>"><b><img src="<?php echo base_url();?>optimum/small.png" alt="Codeig" /></b></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs"><i class="icon-grid"></i></a></li>
                    
@@ -25,6 +25,9 @@
                          
                        <!-- calculator-->
             <style>
+        .dt-buttons{
+         display:none;
+     }
                 .calculator_button{
                     border : 1px solid #303641;
                     width: 50px;
@@ -317,11 +320,11 @@
                     </li>
                     <!-- /.dropdown -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="<?php echo base_url();?>optimum/images/admin.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $this->session->userdata('name'); ?></b> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><b class="hidden-xs"><?php echo $this->session->userdata('name'); ?>  Admin</b> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="javascript:void(0)"><i class="ti-user"></i>  My Profile</a></li>
+                            <!--<li><a href="javascript:void(0)"><i class="ti-user"></i>  My Profile</a></li>
                             <li><a href="javascript:void(0)"><i class="ti-email"></i>  Inbox</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-settings"></i>  Account Setting</a></li>
+                            <li><a href="javascript:void(0)"><i class="ti-settings"></i>  Account Setting</a></li>-->
                             <li><a href="<?php echo base_url('auth/logout') ?>"><i class="fa fa-power-off"></i>  Logout</a></li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -336,7 +339,7 @@
         </nav>
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+            <div class="sidebar-nav navbar-collapse slimscrollsidebar" >
                 <ul class="nav" id="side-menu">
                     <li class="sidebar-search hidden-sm hidden-md hidden-lg">
                         <!-- input-group -->
@@ -350,9 +353,9 @@
                         <a href="#" class="waves-effect"><img src="<?php echo base_url();?>optimum/images/admin.jpg" alt="user-img" class="img-circle"> <span class="hide-menu"><?php echo $this->session->userdata('name'); ?><span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
+                            <!--<li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
                             <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>-->
                             <li><a href="<?php echo base_url('auth/logout') ?>"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </li>
@@ -371,13 +374,15 @@
                       </ul>
                     </li>
 		     
-                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-user p-r-10"></i> <span class="hide-menu"> Create City <span class="fa arrow"></span><!--<span class="label label-rouded label-danger pull-right">3</span>--></span></a>
+                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="glyphicon glyphicon-map-marker"></i> <span class="hide-menu">Manage Location<span class="fa arrow"></span><!--<span class="label label-rouded label-danger pull-right">3</span>--></span></a>
                         <ul class="nav nav-second-level">
 						
                              <li> <a href="<?php echo base_url('admin/city') ?>"><i class="fa fa-plus p-r-10"></i><span class="hide-menu">New City</span></a></li>
 							
                           
 						<li><a href="<?php echo base_url('admin/city/all_city_list') ?>"><i class="fa fa-list p-r-10"></i><span class="hide-menu">List City</span></a></li>
+                        <li> <a href="<?php echo base_url('admin/locality') ?>"><i class="fa fa-plus p-r-10"></i><span class="hide-menu">New Locality</span></a></li>
+                        <li><a href="<?php echo base_url('admin/locality/all_locality_list') ?>"><i class="fa fa-list p-r-10"></i><span class="hide-menu">List Locality</span></a></li>
                       </ul>
                     </li>
                     <!--<li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-envelope p-r-10"></i> <span class="hide-menu"> Mailbox <span class="fa arrow"></span><span class="label label-rouded label-danger pull-right">6</span></span></a>
@@ -387,117 +392,52 @@
                             <li> <a href="<?php //echo base_url('admin/mail/compose_message') ?>">Compose mail</a></li>
                         </ul>
                     </li>-->
-					
-					
-                   
-                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-chart p-r-10"></i> <span class="hide-menu"> Reports <span class="fa arrow"></span></span></a>
+		<li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-list-alt" aria-hidden="true"></i> <span class="hide-menu">Create Category <span class="fa arrow"></span><!--<span class="label label-rouded label-danger pull-right">3</span>--></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="<?php echo base_url('admin/report/payment_report') ?>">Payment Report</a></li>
-                            <li> <a href="<?php echo base_url('admin/report/income_report') ?>">Income Report</a></li>
-                            <li> <a href="<?php echo base_url('admin/report/sales_report') ?>">Sales Report</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-inr p-r-10"></i> <span class="hide-menu"> Payments <span class="fa arrow"></span></span></a>
+						
+                             <li> <a href="<?php echo base_url('admin/category') ?>"><i class="fa fa-plus p-r-10"></i><span class="hide-menu">New Category</span></a></li>
+							
+                          
+						<li><a href="<?php echo base_url('admin/category/all_category_list') ?>"><i class="fa fa-list p-r-10"></i><span class="hide-menu">List Category</span></a></li>
+                      </ul>
+                    </li>			
+			<li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-suitcase"></i> <span class="hide-menu">Create Sub-Category <span class="fa arrow"></span><!--<span class="label label-rouded label-danger pull-right">3</span>--></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="<?php echo base_url('admin/payment/all_payments') ?>">All Payments</a></li>
-                            <li> <a href="<?php echo base_url('admin/payment/create_payment') ?>">Create Payment</a></li>
-                            <li> <a href="<?php echo base_url('admin/payment/payment_invoice') ?>">Payment Invoice</a></li>
-                        </ul>
+						
+                             <li> <a href="<?php echo base_url('admin/subcategory') ?>"><i class="fa fa-plus p-r-10"></i><span class="hide-menu">New Sub Category</span></a></li>
+							
+                          
+						<li><a href="<?php echo base_url('admin/subcategory/all_sub_category_list') ?>"><i class="fa fa-list p-r-10"></i><span class="hide-menu">List Sub Category</span></a></li>
+                      </ul>
                     </li>
-					
-					 <li> <a href="forms.html" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Forms<span class="fa arrow"></span></span></a>
+<li> <a href="javascript:void(0);" class="waves-effect"><i class="icon-user p-r-10"></i> <span class="hide-menu">Create Dealer <span class="fa arrow"></span><!--<span class="label label-rouded label-danger pull-right">3</span>--></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url('admin/form/form_basic') ?>">Basic Forms</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_layout') ?>">Form Layout</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_addon') ?>">Form Addons</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_material') ?>">Form Material</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_float') ?>">Form Float Input</a></li>
-                            <li><a href="<?php echo base_url('admin/form/file_upload') ?>">File Upload</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_mask') ?>">Form Mask</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_validation') ?>">Form Validation</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_dropzone') ?>">File Dropzone</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_picker') ?>">Form-pickers</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_icheck') ?>">Icheck Form Controls</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_wizard') ?>">Form-wizards</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_typehead') ?>">Typehead</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_editable') ?>">X-editable</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_summernote') ?>">Summernote</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_wysihtml5') ?>">Bootstrap wysihtml5</a></li>
-                            <li><a href="<?php echo base_url('admin/form/form_tinymyce') ?>">Tinymce wysihtml5</a></li>
-                        </ul>
-                    </li>
+						
+                             <li> <a href="<?php echo base_url('admin/dealer/add_edit') ?>"><i class="fa fa-plus p-r-10"></i><span class="hide-menu">New Dealer</span></a></li>
+							
+                          
+						<li><a href="<?php echo base_url('admin/dealer/all_dealer_list') ?>"><i class="fa fa-list p-r-10"></i><span class="hide-menu">List Dealer</span></a></li>
+                      </ul>
+                    </li>			    
+                    
+                    <li> <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-eye"></i> <span class="hide-menu">Reviews <span class="fa arrow"></span><!--<span class="label label-rouded label-danger pull-right">3</span>--></span></a>
+                        <ul class="nav nav-second-level">
+						<li><a href="<?php echo base_url('admin/review') ?>"><i class="fa fa-list p-r-10"></i><span class="hide-menu">Reviews</span></a></li>
+                      </ul>
+                    </li>			    
+                  
 					<li> <a href="<?php echo base_url('admin/dashboard/backup') ?>" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Backup Database</span></a> </li>
-					
-                    <li> <a href="<?php echo base_url('admin/widget/widget') ?>" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Widgets</span></a> </li>
-                    <li> <a href="#" class="waves-effect"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Icons<span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="<?php echo base_url('admin/icon/font_awesome') ?>">Font awesome</a> </li>
-                            <li> <a href="<?php echo base_url('admin/icon/themifyIcon') ?>">Themify Icons</a> </li>
-                            <li> <a href="<?php echo base_url('admin/icon/simpleLineIcon') ?>">Simple line Icons</a> </li>
-                            <li><a href="<?php echo base_url('admin/icon/lineIcon') ?>">Linea Icons</a></li>
-                            <li><a href="<?php echo base_url('admin/icon/weatherIcon') ?>">Weather Icons</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li> <a href="#" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Sample Pages<span class="fa arrow"></span><span class="label label-rouded label-purple pull-right">29</span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url('admin/page/starter') ?>">Starter Page</a></li>
-                            <li><a href="<?php echo base_url('admin/page/blank') ?>">Blank Page</a></li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Email Templates
-            <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a href="<?php echo base_url('admin/page/email_basic') ?>">Basic</a></li>
-                                    <li><a href="<?php echo base_url('admin/page/email_alert') ?>">Alert</a></li>
-                                    <li><a href="<?php echo base_url('admin/page/email_billing') ?>">Billing</a></li>
-                                    <li><a href="<?php echo base_url('admin/page/reset_password') ?>">Reset Password</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="<?php echo base_url('admin/page/lightBox') ?>">Lightbox Popup</a></li>
-                            <li><a href="<?php echo base_url('admin/page/treeview') ?>">Treeview</a></li>
-                            <li><a href="<?php echo base_url('admin/page/search_result') ?>">Search Result</a></li>
-                            <li><a href="<?php echo base_url('admin/page/utility_class') ?>">Utility Classes</a></li>
-                            <li><a href="<?php echo base_url('admin/page/custom_scroll') ?>">Custom Scrolls</a></li>
-                            <li><a href="<?php echo base_url('admin/page/login_page') ?>">Login Page</a></li>
-                            <li><a href="<?php echo base_url('admin/page/second_login') ?>">Login v2</a></li>
-                            <li><a href="<?php echo base_url('admin/page/animation') ?>">Animations</a></li>
-                            <li><a href="<?php echo base_url('admin/page/profile') ?>">Profile</a></li>
-                            <li><a href="<?php echo base_url('admin/page/invoice') ?>">Invoice</a></li>
-                            <li><a href="<?php echo base_url('admin/page/faq') ?>">FAQ</a></li>
-                            <li><a href="<?php echo base_url('admin/page/gallery') ?>">Gallery</a></li>
-                            <li><a href="<?php echo base_url('admin/page/pricing') ?>">Pricing</a></li>
-                            <li><a href="<?php echo base_url('admin/page/register') ?>">Register</a></li>
-                            <li><a href="<?php echo base_url('admin/page/second_register') ?>">Register v2</a></li>
-                            <li><a href="<?php echo base_url('admin/page/step_registration') ?>">3 Step Registration</a></li>
-                            <li><a href="<?php echo base_url('admin/page/recover_password') ?>">Recover Password</a></li>
-                        </ul>
-                    </li>
-                   
-                    <li> <a href="tables.html" class="waves-effect"><i data-icon="O" class="linea-icon linea-software fa-fw"></i> <span class="hide-menu">Tables<span class="fa arrow"></span><span class="label label-rouded label-info pull-right">7</span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url('admin/table/basic_table') ?>">Basic Tables</a></li>
-                            <li><a href="<?php echo base_url('admin/table/table_layout') ?>">Table Layouts</a></li>
-                            <li><a href="<?php echo base_url('admin/table/data_table') ?>">Data Table</a></li>
-                            <li><a href="<?php echo base_url('admin/table/bootsrap_table') ?>">Bootstrap Tables</a></li>
-                            <li><a href="<?php echo base_url('admin/table/responsive_table') ?>">Responsive Tables</a></li>
-                            <li><a href="<?php echo base_url('admin/table/editable_table') ?>">Editable Tables</a></li>
-                            <li><a href="<?php echo base_url('admin/table/footable') ?>">FooTables</a></li>
-                        </ul>
-                    </li>
-                    
                     <li><a href="<?php echo base_url('auth/logout') ?>" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
                 </ul>
             </div>
         </div>
         <!-- Left navbar-header end -->
-       
-	   
 	    <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-                
 			<div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Codeigniter Admin</h4>
+                        <h4 class="page-title"> Admin Panel</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <!--<a href="" target="_blank" class="btn pull-right m-l-20 btn-info btn-rounded btn-sm">Buy Now</a>-->
                         <ol class="breadcrumb">
@@ -511,7 +451,7 @@
 				
 				
 				
-				<!--  row    ->
+				<!--  row    -->
                <?php echo $main_content; ?>
                 <!-- /.row -->
 			
